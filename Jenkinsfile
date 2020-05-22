@@ -6,7 +6,7 @@
 // I'm sure more info is missing but this is a good start.
 
 // Install the following plugins for this script to work
-// "Pipeline utility" plugin
+// "Pipeline Utility Steps" plugin
 // "Rich Text Publisher" plugin
 // "Pipeline basic steps" plugin
 // "user build vars" plugin

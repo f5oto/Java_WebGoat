@@ -2,7 +2,8 @@
 // Configure settings.xml "mirrorOf" and "server" to point to your nxrm with creds
 // create the relevant deployment repo in NXRM
 // configure Jenkins Nexus Repo and IQ connections in "Settings > Configure System"
-// set "git" to auto install in "Settings > Global tools config"
+// set "git" to auto install in "Settings > Global Tools Config"
+// Configure Maven plugin install with "M3" ID in "Global Tools Config"
 // I'm sure more info is missing but this is a good start.
 
 // Install the following plugins for this script to work

@@ -39,12 +39,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -Dmaven.test.failure.ignore clean package'
+                sh 'mvn -B -Dproject.version=$BUILD_VERSION -Dmaven.test.failure.ignore clean package'
             }
             post {
                 success {
                     echo 'Now archiving ...'
-                   archiveArtifacts artifacts: "**/target/*-*.${packaging}"
+                   archiveArtifacts artifacts: "**/target/*-${version}.${packaging}"
                 }
             }
         }
@@ -104,7 +104,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-                    nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: "${DEPLOY_REPO}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: "${packaging}", filePath: "${ARTEFACT_NAME}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "*"]]], tagName: "${BUILD_TAG}"
+                    nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: "${DEPLOY_REPO}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: "${packaging}", filePath: "${ARTEFACT_NAME}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]], tagName: "${BUILD_TAG}"
                 }
             }
         }

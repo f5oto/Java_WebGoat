@@ -104,7 +104,7 @@ pipeline {
         stage('Upload to Nexus Repository'){
             steps {
                 script {
-                    nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: "${DEPLOY_REPO}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: "${packaging}", filePath: "${ARTEFACT_NAME}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]], tagName: "${BUILD_TAG}"
+                    nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: "${DEPLOY_REPO}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: "${packaging}", filePath: "${ARTEFACT_NAME}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "*"]]], tagName: "${BUILD_TAG}"
                 }
             }
         }

@@ -39,12 +39,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -Dproject.version=$BUILD_VERSION -Dmaven.test.failure.ignore clean package'
+                sh 'mvn -B -Dmaven.test.failure.ignore clean package'
             }
             post {
                 success {
                     echo 'Now archiving ...'
-                   archiveArtifacts artifacts: "**/target/*-${version}.${packaging}"
+                   archiveArtifacts artifacts: "**/target/*-*.${packaging}"
                 }
             }
         }
